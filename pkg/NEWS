@@ -1,0 +1,6 @@
+Initial Version 1.0 (Benk)
+=============================
+ o Initial features:
+   - routine returning the price of the option
+   - routine returning the price of the option and 
+the multi-dimensional regular mesh with the result

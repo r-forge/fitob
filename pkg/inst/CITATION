@@ -1,0 +1,18 @@
+citHeader("To cite package 'fitob' in publications use:")
+
+citEntry(entry="Article",
+  title = "Hybrid Parallel Solutions of the Black-Scholes PDE
+with the Truncated Combination Technique",
+  author = personList(as.person("Janos Benk"), 
+                      as.person("Dirk Pflueger"),
+  journal =	"International Conference on High Performance Computing and Simulation (HPCS)",
+  year = 	"2012",
+  URL =  	"http://hpcs2012.cisedu.info/",
+  keywords =	"Black-Scholes PDE, combination technique, sparse
+grids, parallelization"
+  textVersion =  paste("Janos Benk, Dirk Pflueger (2010).
+Hybrid Parallel Solutions of the Black-Scholes PDE
+with the Truncated Combination Technique,
+  2012 International Conference on High Performance Computing and Simulation (HPCS),
+  URL http://hpcs2012.cisedu.info/")
+)

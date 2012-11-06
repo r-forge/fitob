@@ -1,0 +1,3 @@
+useDynLib(fitob, mainScriptPrice, mainScriptPriceFG, mainScriptMCPrice)
+
+export(fitobPrice, fitobPriceMC, fitobPriceMesh, fitobMeshPlot)

@@ -1,0 +1,15 @@
+# COMPILATION WITHOUT OpenMP
+PKG_CPPFLAGS=-I. -I./boost_1_50_0 -I./src -I./combigrid     #$(SHLIB_OPENMP_CPPFLAGS) -DFITOB_OPENMP 
+PKG_CFLAGS=-I. -I./boost_1_50_0 -I./src -I./combigrid     #$(SHLIB_OPENMP_CFLAGS) -DFITOB_OPENMP
+
+# COMPILATION WITHOUT OpenMP
+PKG_LIBS= -lm -lsupc++ -lstdc++     #$(SHLIB_OPENMP_CFLAGS) $(SHLIB_OPENMP_CFLAGS) -lgomp
+
+SOURCES=$(wildcard combigrid/*.cpp combigrid/*/*.cpp combigrid/*/*/*.cpp src/*/*.cpp)
+
+OBJECTS = $(SOURCES:.cpp=.o)
+
+all: $(SHLIB)
+
+clean:
+	@rm -f $(OBJECTS)
