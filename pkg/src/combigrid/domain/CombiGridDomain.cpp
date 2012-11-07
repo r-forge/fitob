@@ -47,11 +47,11 @@ void combigrid::GridDomain::transformRealToUnit( std::vector< double >& coords ,
 	}
 }
 void combigrid::GridDomain::printDomain(){
-	std::cout<<"------------------"<<std::endl;
+	/*std::cout<<"------------------"<<std::endl;
 	for (int d=0;d<dim_;d++){
 		std::cout<<axisDomains_[d].getMinDomain()<<"\t"<<axisDomains_[d].getMaxDomain()<<"\t"<<axisDomains_[d].isAxisScaled()<<std::endl;
 	}
-	std::cout<<"------------------"<<std::endl;
+	std::cout<<"------------------"<<std::endl;*/
 }
 
 

@@ -96,12 +96,12 @@ void CombigridLevelVector::doAddition(){
 }
 
 void CombigridLevelVector::printLevelVec(){
-	for (int i = 0; i < getN(); ++i) {
+	/*for (int i = 0; i < getN(); ++i) {
 		for (int j = 0; j < getDim(); ++j) {
 			std::cout<<levelVec_[i][j]<<"\t";
 		}
 		std::cout<<" | "<<coef_[i]<<std::endl;
-	}
+	}*/
 }
 
 CombigridLevelVector CombigridLevelVector::getCombiLevels(std::vector<CombigridLevelVector> in){
