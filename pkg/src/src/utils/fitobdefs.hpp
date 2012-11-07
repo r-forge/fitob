@@ -66,6 +66,8 @@ typedef std::vector<int> IVector;
 /** ------- Assert definition ------ */
 #define FITOB_ASSERT(val) BOOST_ASSERT(val);
 
+#define NO_STD_ERROR
+
 /** -------- */
 
 namespace fitob{
@@ -93,39 +95,58 @@ namespace fitob{
 
 #define isZero(value) bool(fabs(value)<1e-12);
 
+
+#ifdef NO_STD_ERROR
 /** Unconditionally write out */
 #if defined(FITOB_MPI)
-#define FITOB_OUT(str) { \
-	    std::cout << FITOB_MPI_Comm_rank() << ":" << str << std::endl; };
+#define FITOB_OUT(str) {};
 #else
-#define FITOB_OUT(str) { \
-	    /*std::cout << str << std::endl;*/ };
+#define FITOB_OUT(str) {};
 #endif
 
+#define FITOB_ERROR_TEST(test,str) {};
 
-#define FITOB_ERROR_TEST(test,str) { \
+#define FITOB_ERROR_EXIT(str) {};
+
+#define FITOB_WARNING_TEST(test,str) {};
+
+#define FITOB_WARNING(str) {};
+
+#define FITOB_ERROR_MSG(str) {};
+
+#else
+	/** Unconditionally write out */
+	#if defined(FITOB_MPI)
+	#define FITOB_OUT(str) { \
+			std::cout << FITOB_MPI_Comm_rank() << ":" << str << std::endl; };
+	#else
+	#define FITOB_OUT(str) { \
+			std::cout << str << std::endl; };
+	#endif
+
+
+	#define FITOB_ERROR_TEST(test,str) { \
 	    if (!(test)) std::cout << std::endl << "ERROR: " << str << std::endl; \
 	    BOOST_ASSERT(test); } \
 
 
-#define FITOB_ERROR_EXIT(str) { \
+	#define FITOB_ERROR_EXIT(str) { \
 	    std::cout << std::endl << "ERROR: " << str << std::endl; \
 	    BOOST_ASSERT(false); } \
 
-#define FITOB_WARNING_TEST(test,str) { \
+	#define FITOB_WARNING_TEST(test,str) { \
 	    if (!(test)) std::cout << std::endl << "WARNING: " << str << std::endl; \
 	    } \
 
 
-#define FITOB_WARNING(str) { \
+	#define FITOB_WARNING(str) { \
 	    std::cout << std::endl << "WARNING: " << str << std::endl; \
 	     } \
 
-
-/** write error message out*/
-#define FITOB_ERROR_MSG(str) { \
+	#define FITOB_ERROR_MSG(str) { \
 	    std::cout << std::endl << "ERROR: " << str << std::endl; } \
 
+#endif
 
 /** Conditionally write out */
 #define FITOB_OUT_LEVEL(limit,level,str) \

@@ -50,7 +50,7 @@ SEXP mainScriptMCPrice(SEXP XMLFile, SEXP ScriptFile)
     fitob::FitobCalculator calc( XMLFileName , ScriptFileName );
     // calculate the script
     DVector res = calc.evaluateScript_MonteCarlo();
-    std::cout << ::std::setprecision( 12 ) << " RESULT[0] = " << res[0] << std::endl;
+    //std::cout << ::std::setprecision( 12 ) << " RESULT[0] = " << res[0] << std::endl;
     SEXP ret;
     PROTECT(ret = NEW_NUMERIC(1));
     NUMERIC_POINTER(ret)[0] = res[0];

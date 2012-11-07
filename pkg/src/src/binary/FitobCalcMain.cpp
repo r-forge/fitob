@@ -56,7 +56,7 @@ SEXP mainScriptPrice(SEXP XMLFile, SEXP ScriptFile){
     SEXP ret;
     PROTECT(ret = NEW_NUMERIC(1));
     NUMERIC_POINTER(ret)[0] = res;
-    std::cout << ::std::setprecision( 12 ) << " RESULT = " << res << std::endl;
+    //std::cout << ::std::setprecision( 12 ) << " RESULT = " << res << std::endl;
     // MPI finalize in case
     fitob::FITOB_MPI_Finalize( );
     // return the price
@@ -76,7 +76,7 @@ SEXP mainScriptPriceFG(SEXP XMLFile, SEXP ScriptFile, SEXP levelIn) {
     int plevel_in = INTEGER(levelIn)[0];
     // call the pricing 
     boost::shared_ptr<fitob::FullGrid> fg = calc.evaluateScript_FG(res, plevel_in);
-    std::cout << ::std::setprecision( 12 ) << " RESULT = " << res << std::endl;
+    //std::cout << ::std::setprecision( 12 ) << " RESULT = " << res << std::endl;
 
     const boost::shared_ptr<fitob::ScriptModel> &scriptModel = calc.getScriptModel();
 
