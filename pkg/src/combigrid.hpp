@@ -9,7 +9,6 @@
 #define COMBIGRID_HPP_
 
 // ----------- Combi Grid Includes ----------
-#include "combigrid/utils/L2ScalarProduct.hpp"
 #include "combigrid/combigrid/AbstractCombiGrid.hpp"
 #include "combigrid/combigrid/SerialCombiGrid.hpp"
 #include "combigrid/combigrid/AdaptiveSerialCombiGrid.hpp"

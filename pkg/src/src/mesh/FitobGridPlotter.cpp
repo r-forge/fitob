@@ -12,9 +12,9 @@
 //#include <boost/filesystem.hpp>
 
 #include <iostream>
-#include <fstream>
-#include <sys/stat.h>
-#include <sys/types.h>
+//#include <fstream>
+//#include <sys/stat.h>
+//#include <sys/types.h>
 
 using namespace fitob;
 using namespace std;
@@ -54,8 +54,8 @@ GridPlotter::GridPlotter(const boost::shared_ptr<XMLConfiguration>& config)
 
 	// create the "GridPlotter::outDir_" directory
 	FITOB_OUT_LEVEL3(verb(),"GridPlotter create out directory");
-	__mode_t md = S_IRWXU | S_IRWXG | S_IRWXO;
-	mkdir( GridPlotter::outDir_.c_str() , md );
+	//__mode_t md = S_IRWXU | S_IRWXG | S_IRWXO;
+	//mkdir( GridPlotter::outDir_.c_str() , md );
 	//boost::filesystem::create_directories(GridPlotter::outDir_.c_str());
 	//system("mkdir out");
 
@@ -107,7 +107,8 @@ void GridPlotter::plotMAT(const MeshContext* meshContext , const string& filenam
 
    FITOB_OUT_LEVEL2(verb(),"GridPlotter::plotMAT");
 
-   const string completeName = GridPlotter::outDir_+"/"+filename + boost::lexical_cast<std::string>(couter_)+".m";
+   //const string completeName = GridPlotter::outDir_+"/"+filename + boost::lexical_cast<std::string>(couter_)+".m";
+   const string completeName = filename + boost::lexical_cast<std::string>(couter_)+".m";
    // it is important to get the domain of the mesh and not of the context
    // in case of dimension adaptivity these might be different
    const Domain& dom = meshContext->getMesh()->domain();
@@ -218,7 +219,8 @@ void GridPlotter::plotMAT_grad(const MeshContext* meshContext , const string& fi
 
    FITOB_OUT_LEVEL2(verb(),"GridPlotter::plotMAT_grad");
 
-   const string completeName = GridPlotter::outDir_+"/"+filename + boost::lexical_cast<std::string>(couter_)+".m";
+   //const string completeName = GridPlotter::outDir_+"/"+filename + boost::lexical_cast<std::string>(couter_)+".m";
+   const string completeName = filename + boost::lexical_cast<std::string>(couter_)+".m";
    // it is important to get the domain of the mesh and not of the context
    // in case of dimension adaptivity these might be different
    const MeshBase* mesh = meshContext->getMesh();
@@ -331,10 +333,10 @@ void GridPlotter::plotMAT_grad(const MeshContext* meshContext , const string& fi
 // grid specific plotting
 void GridPlotter::plotGridSpecific(const MeshContext* meshContext , const string& filename){
 	// here we create the grid specific plotting filename
-	const string completeName = GridPlotter::outDir_+"/"+filename +"_gsp_"
+	/*const string completeName = GridPlotter::outDir_+"/"+filename +"_gsp_"
 			+boost::lexical_cast<std::string>(couter_gsp_);
 	meshContext->getMesh()->gridSpecificPlot(completeName);
-	couter_gsp_++;
+	couter_gsp_++;*/
 }
 
 void GridPlotter::plotGNU(const MeshContext* meshContext , const string& filename ,
