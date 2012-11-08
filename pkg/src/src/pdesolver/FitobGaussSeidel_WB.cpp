@@ -103,13 +103,13 @@ void GaussSeidel_WB::calculateRHS( DVector& globCoord){
 		    	   // calculate diagonal according to 1.33
 		    	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
 		    	   // convection
-                           #pragma simd reduction(+:s_mu)
+                   //#pragma simd reduction(+:s_mu)
 		    	   for (int i = 0 ; i < nrFactors_ ; i++){
 		    		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
 		    				   V_ij_x( i , h0[i] , h1[i] , a_x_ij[i] , gridV );
 		    	   }
 		    	   // diffusion
-                           #pragma simd reduction(+:s_sig)
+                   //#pragma simd reduction(+:s_sig)
 		    	   for (int i = 0 ; i < nrFactors_ ; i++){
 		    		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
 		    				   * V_ij_xx( i , h0[i] , h1[i] , a_xx_ij[i] , gridV );
@@ -118,7 +118,7 @@ void GaussSeidel_WB::calculateRHS( DVector& globCoord){
 		    	   if ( this->hasCorrelations_){
 		    		   for (int i = 0 ; i < nrFactors_ ; i++)
 		    		   {
-                                           #pragma simd reduction(+:s_coor)
+                           //#pragma simd reduction(+:s_coor)
 		    			   for (int j = i+1 ; j < nrFactors_ ; j++)
 		    			   {
 		    				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);
@@ -180,13 +180,13 @@ double GaussSeidel_WB::calcResiduum( const DVector& globalCoords ){
 	   // calculate diagonal according to 1.33
 	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
 	   // convection
-           #pragma simd reduction(+:s_mu)
+          // #pragma simd reduction(+:s_mu)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
 				   V_ij_x_sp( i , h0[i] , h1[i] , gridV);
 	   }
 	   // diffusion
-           #pragma simd reduction(+:s_sig)
+          // #pragma simd reduction(+:s_sig)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
 				   * V_ij_xx_sp( i , h0[i] , h1[i] , gridV);
@@ -194,7 +194,7 @@ double GaussSeidel_WB::calcResiduum( const DVector& globalCoords ){
 	   // correlation
 	   if ( this->hasCorrelations_){
 		   for (int i = 0 ; i < nrFactors_ ; i++){
-                           #pragma simd reduction(+:s_coor)
+                        //   #pragma simd reduction(+:s_coor)
 			   for (int j = i+1 ; j < nrFactors_ ; j++)
 			   {
 				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);
@@ -254,12 +254,12 @@ void GaussSeidel_WB::calculateDiag( DVector& globCoord) {
 	    	   // calculate diagonal according to 1.33
 	    	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
 	    	   // convection
-                   #pragma simd reduction(+:s_mu)
+               //#pragma simd reduction(+:s_mu)
 	    	   for (int i = 0 ; i < nrFactors_ ; i++){
 	    		   s_mu = s_mu - models()->getModel(i).convectionCoef(globCoord_tmp)*a_x_ij[i];
 	    	   }
 	    	   // diffusion
-                   #pragma simd reduction(+:s_sig)
+               //#pragma simd reduction(+:s_sig)
 	    	   for (int i = 0 ; i < nrFactors_ ; i++){
 	    		   s_sig = s_sig - a_xx_ij[i] * models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp);
 	    	   }
@@ -322,13 +322,13 @@ void GaussSeidel_WB::oneSmoothGrid( DVector& globCoord){
 	   // calculate diagonal according to 1.33
 	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
 	   // convection
-           #pragma simd reduction(+:s_mu)
+       //#pragma simd reduction(+:s_mu)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
 				   V_ij_x_sp( i , h0[i] , h1[i] , gridV );
 	   }
 	   // diffusion
-           #pragma simd reduction(+:s_sig)
+       //#pragma simd reduction(+:s_sig)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   //FITOB_OUT_LEVEL3(4, " factor [" << i << "] diffcoff =" << models()->getModel(i).diffusionCoef(globCoord) );
 		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
@@ -337,7 +337,7 @@ void GaussSeidel_WB::oneSmoothGrid( DVector& globCoord){
 	   // correlation
 	   if ( this->hasCorrelations_){
 		   for (int i = 0 ; i < nrFactors_ ; i++){
-                           #pragma simd reduction(+:s_coor)
+               //#pragma simd reduction(+:s_coor)
 			   for (int j = i+1 ; j < nrFactors_ ; j++)
 			   {
 				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);
@@ -366,13 +366,13 @@ void GaussSeidel_WB::oneSmoothGrid( DVector& globCoord){
 	   // calculate diagonal according to 1.33
 	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
 	   // convection
-           #pragma simd reduction(+:s_mu)
+         //  #pragma simd reduction(+:s_mu)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
 				   V_ij_x_sp( i , h0[i] , h1[i] , gridV );
 	   }
 	   // diffusion
-           #pragma simd reduction(+:s_sig)
+         //  #pragma simd reduction(+:s_sig)
 	   for (int i = 0 ; i < nrFactors_ ; i++){
 		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
 				   * V_ij_xx_sp( i , h0[i] , h1[i] , gridV );
@@ -380,7 +380,7 @@ void GaussSeidel_WB::oneSmoothGrid( DVector& globCoord){
 	   // correlation
 	   if ( this->hasCorrelations_){
 		   for (int i = 0 ; i < nrFactors_ ; i++){
-                           #pragma simd reduction(+:s_coor)
+                      //     #pragma simd reduction(+:s_coor)
 			   for (int j = i+1 ; j < nrFactors_ ; j++)
 			   {
 				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);
@@ -448,13 +448,13 @@ void GaussSeidel_WB::explicitStep( DVector& globCoord , DVector& unknowns , doub
  	   // calculate diagonal according to 1.33
  	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
  	   // convection
-           #pragma simd reduction(+:s_mu)
+          // #pragma simd reduction(+:s_mu)
  	   for (int i = 0 ; i < nrFactors_ ; i++){
  		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
  				   V_ij_x( i , h0[i] , h1[i] , a_x_ij[i] , gridV);
  	   }
  	   // diffusion
-           #pragma simd reduction(+:s_sig)
+         //  #pragma simd reduction(+:s_sig)
  	   for (int i = 0 ; i < nrFactors_ ; i++){
  		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
  				   * V_ij_xx( i , h0[i] , h1[i] , a_xx_ij[i] , gridV );
@@ -462,7 +462,7 @@ void GaussSeidel_WB::explicitStep( DVector& globCoord , DVector& unknowns , doub
  	   // correlation
  	   if ( this->hasCorrelations_){
  		   for (int i = 0 ; i < nrFactors_ ; i++){
-                           #pragma simd reduction(+:s_coor)
+                       //    #pragma simd reduction(+:s_coor)
  			   for (int j = i+1 ; j < nrFactors_ ; j++)
  			   {
  				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);
@@ -502,13 +502,13 @@ void GaussSeidel_WB::explicitStep( DVector& globCoord , DVector& unknowns , doub
  	   // calculate diagonal according to 1.33
  	   s_mu = 0.0; s_sig = 0.0; s_coor = 0.0; s_r = 0.0;
  	   // convection
-           #pragma simd reduction(+:s_mu)
+         //  #pragma simd reduction(+:s_mu)
  	   for (int i = 0 ; i < nrFactors_ ; i++){
  		   s_mu = s_mu + models()->getModel(i).convectionCoef(globCoord_tmp) *
  				   V_ij_x( i , h0[i] , h1[i] , a_x_ij[i] , gridV );
  	   }
  	   // diffusion
-           #pragma simd reduction(+:s_sig)
+         //  #pragma simd reduction(+:s_sig)
  	   for (int i = 0 ; i < nrFactors_ ; i++){
  		   s_sig = s_sig + models()->getModel(i).diffusionCoef(globCoord_tmp) * models()->getModel(i).diffusionCoef(globCoord_tmp)
  				   * V_ij_xx( i , h0[i] , h1[i] , a_xx_ij[i] , gridV );
@@ -516,7 +516,7 @@ void GaussSeidel_WB::explicitStep( DVector& globCoord , DVector& unknowns , doub
  	   // correlation
  	   if ( this->hasCorrelations_){
  		   for (int i = 0 ; i < nrFactors_ ; i++){
-                           #pragma simd reduction(+:s_coor)
+                    //    #pragma simd reduction(+:s_coor)
  			   for (int j = i+1 ; j < nrFactors_ ; j++)
  			   {
  				   updateStage_xy( i , j , gridV_xy , gridV , linearIndex , axisIndex , tmpMark_xy);

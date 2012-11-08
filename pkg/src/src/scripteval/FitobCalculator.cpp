@@ -8,9 +8,10 @@
 #include "FitobCalculator.hpp"
 #include "src/expressions/FitobExpressionBasis.hpp"
 
+/*
 #include <ctime>
 #include <stdio.h>
-#include <time.h>
+#include <time.h>*/
 
 using namespace fitob;
 using namespace std;
@@ -209,13 +210,13 @@ void FitobCalculator::backwardCalculation(){
 
 double FitobCalculator::evaluateScript(){
 
-	std::clock_t _start_time = std::clock();
+/*	std::clock_t _start_time = std::clock();
 
 	time_t rawtime;
 	struct tm * timeinfo;
 	time ( &rawtime );
 	timeinfo = localtime ( &rawtime );
-	string start_time_string = asctime (timeinfo);
+	string start_time_string = asctime (timeinfo);*/
 
 	// do the forward estimation
 	forwardEstimation();
@@ -232,26 +233,26 @@ double FitobCalculator::evaluateScript(){
 	double res = contextStack_[0].eval(evalDomain_.get()->getAverage());
 #endif
 
-	time ( &rawtime );
+/*	time ( &rawtime );
 	timeinfo = localtime ( &rawtime );
 	string end_time_string = asctime (timeinfo);
 
 	FITOB_OUT_LEVEL1(verb(),"FitobCalculator::evaluateScript  eval = " << res <<
 			" , Runtime(sec):" << (double(std::clock() - _start_time) / CLOCKS_PER_SEC) );
 	FITOB_OUT_LEVEL1(verb()," Start date: " << start_time_string );
-	FITOB_OUT_LEVEL1(verb()," End date: " << end_time_string);
+	FITOB_OUT_LEVEL1(verb()," End date: " << end_time_string);*/
 	return res;
 }
 
 boost::shared_ptr<FullGrid> FitobCalculator::evaluateScript_FG(double& retVal, int level_in)
 {
-	std::clock_t _start_time= std::clock();
+/*	std::clock_t _start_time= std::clock();
 
 	time_t rawtime;
 	struct tm * timeinfo;
 	time ( &rawtime );
 	timeinfo = localtime ( &rawtime );
-	string start_time_string = asctime (timeinfo);
+	string start_time_string = asctime (timeinfo);*/
 
 	// do the forward estimation
 	forwardEstimation();
@@ -271,14 +272,14 @@ boost::shared_ptr<FullGrid> FitobCalculator::evaluateScript_FG(double& retVal, i
 	retVal = contextStack_[0].eval(evalDomain_.get()->getAverage());
 #endif
 
-	time ( &rawtime );
+/*	time ( &rawtime );
 	timeinfo = localtime ( &rawtime );
 	string end_time_string = asctime (timeinfo);
 
 	FITOB_OUT_LEVEL1(verb(),"FitobCalculator::evaluateScript_FG  eval = " << retVal <<
 			" , Runtime(sec):" << (double(std::clock() - _start_time) / CLOCKS_PER_SEC) );
 	FITOB_OUT_LEVEL1(verb()," Start date: " << start_time_string );
-	FITOB_OUT_LEVEL1(verb()," End date: " << end_time_string);
+	FITOB_OUT_LEVEL1(verb()," End date: " << end_time_string);*/
 
 	// import variables
 	int nrImp = normMeasureDomain_->nrImportVariables();
