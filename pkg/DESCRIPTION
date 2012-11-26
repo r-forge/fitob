@@ -1,14 +1,14 @@
 Package: fitob
 Version: 1.0
 Title:  General solvers for the general Black-Scholes
-        (Max-Fokker Planck) partial differential equation (PDE) 
+        (Fokker Planck) partial differential equation (PDE) 
         in a multi-dimensional setting with main application 
         in finance (option pricing). 
 Author: Janos Benk <benkjanos@gmail.com>
 Maintainer: Janos Benk <benkjanos@gmail.com>
 Depends: R (>= 2.6.0)
 Description: The main focus in this package is the solving of the 
-        Black-Scholes (Max-Fokker Planck) PDE for financial contract 
+        Black-Scholes (Fokker Planck) PDE for financial contract 
         pricing. It offers a general script languages that describes 
         any financial contract in an efficient and unique way.
         These financial pricing problems can be in multi-dimensions, 
@@ -21,8 +21,7 @@ Description: The main focus in this package is the solving of the
         dimensions (accuracy is problem dependent).
         Solving such convection-diffusion PDE in multi-dimensional
         setting could be beneficiary in other applications 
-        (other than finance) as well.
-        The actual version supports multi-threading parallelism. 
+        (other than finance) as well. 
 License: GPL (>= 2)
 URL: http://fitob.r-forge.r-project.org/
 LazyData: yes

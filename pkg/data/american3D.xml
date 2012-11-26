@@ -5,18 +5,18 @@
   <solver type="multigrid" externtype="SGpp">
       <!-- This is right now used to limit the combi technique , after this time the fullgrids will be forced to be combined -->
 	  <multigrid-solver>
-	  	  <minCombiStep value="0.1"/>
-	  	  <CombiStepControl value="1e-3"/>
-	          <maxCombiStep value="0.1"/>
-	          <solverEps value="1e-8"/>
+	  	  <minCombiStep value="1.0001"/>
+	  	  <CombiStepControl value="1e-2"/>
+	      <maxCombiStep value="1.1"/>
+	      <solverEps value="1e-8"/>
 	          <!-- The minimum value of one time step (inside the solver) 
 	           For solvers with fixed time step this can be taken as a fix timestep -->
-		  <mindt value="0.0001"/>
+		  <mindt value="0.00001"/>
 	          <!-- The maximum value of one time step (inside the solver) -->
 		  <maxdt value="0.01"/>
 		  <usepredictor value="true"/>
 		  <useTimeStepControl value="true"/>
-		  <timeStepControl value="1e-4"/>
+		  <timeStepControl value="1e-3"/>
 		  <timeStepControlInfNorm value="true"/>
 		  <predictorUnderRelaxCoef value="1.0"/>
 	  </multigrid-solver>
@@ -26,10 +26,10 @@
    sparsegrid , fullgrid -->
   <gridproperties>
 	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
-	  <DEBUG_PLOTTING value="false" gridspecificplotting="false"/>
-	  <MAX_LEVEL value="6"/>
+	  <DEBUG_PLOTTING value="false" axis1="1" axis0="2" gridspecificplotting="false"/>
+	  <MAX_LEVEL value="4"/>
 	  <USE_SCALING value="true"/>
-	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
+	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6,5"/>
 	  <combigrid>
 			<USE_OPTICOM value="false"/>
 			<COMBI_DIAGONAL_CUT_LEVEL value="-2.0"/>
@@ -39,22 +39,31 @@
   <!-- Here we define the starting domain end the end evaluation points 
       min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
   <domain>
-	    <variable name="S" min="95" max="105" evaluation="100" />
+    <variable name="S1" min="90" max="110" evaluation="100"/>
+    <variable name="S2" min="90" max="110" evaluation="100"/>
+    <variable name="S3" min="90" max="110" evaluation="100"/>
   </domain>
 
   <thetaoperator>
 	<!-- There can be different type of models depending on the type argument -->
 	<DIFFUSION_VARIABLES>
-	  <variable name="S" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
+	  <variable name="S1" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
+	  <variable name="S2" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
+	  <variable name="S3" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
 	</DIFFUSION_VARIABLES>
 	<RISK_FREE_RATE value="0.05" variable_coupled=""/>
 	<!-- the correlation matrix -->
 	<CORRELATIONS>
-	    <correlation value="1.0"/>
+	    <correlation value="1.0,0.3,0.5"/>
+	    <correlation value="0.3,1.0,-0.3"/>
+	    <correlation value="0.5,-0.3,1.0"/>
 	</CORRELATIONS>
 	<STANDARD_DEVIATION_FACTORS>
-	  <STANDARD_DEVIATION_FACTOR value="8"/>
+	  <STANDARD_DEVIATION_FACTOR value="5"/>
+	  <STANDARD_DEVIATION_FACTOR value="5"/>
+	  <STANDARD_DEVIATION_FACTOR value="5"/>
 	</STANDARD_DEVIATION_FACTORS>
   </thetaoperator>
   
 </thetaconfigurations>
+

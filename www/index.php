@@ -43,7 +43,21 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> No content added. </p>
+<p> The main focus of the R Package Fitob is the PDE-based financial derivative pricing.  
+Fitob is able to solve not just the Black-Scholes PDE in a multidimensional setting, 
+but also the more general Fokker-Planck (convection-diffusion) PDE. 
+Fitob provides a general scripting interface that can describe almost any financial 
+contract in an efficient and unique way. <br> 
+The following examples illustrate the PDE-based pricing approach of financial contracts:
+</p>
+<p> <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="304" height="228"> </p>
+
+<p> <img src="sim_S_A.gif" alt="Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
+A is the state of the account, S is the underlying's price" width="304" height="228"> </p>
+
+<p> Manual and Tutorial of the Fitob R Package <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf">  here </strong> </a> </p>
+
+<p> Download Fitob R Package <strong> <a href="http://r-forge.r-project.org/R/?group_id=1515">  here </strong> </a> </p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 

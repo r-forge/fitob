@@ -1,0 +1,14 @@
+model americD1;
+   import S;
+   export P;
+    
+   loop (inf) 
+      P = MAX(100-S,P); 
+   end;
+
+   N = 2;
+   loop (N) 
+       Theta 1/N; 
+   end;
+   P = MAX(100-S,0);
+end;

@@ -1,0 +1,24 @@
+model GMIB;
+   import S;
+   import r;
+   export P;
+
+   S = MODEL(0.0,0.02*S,0.3*S);
+
+   CI = 0.15;
+   N1 = 10;
+   N2 = 10;
+
+   loop (N1)
+     Theta 1.0;
+   end;
+
+   P = MAX(S-P,0);
+
+   P = P+CI;
+   loop (N2)
+     Theta 1.0;
+     P = P+CI;
+   end;
+   P = 0;
+end;

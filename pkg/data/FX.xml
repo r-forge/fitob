@@ -2,21 +2,21 @@
 <thetaconfigurations>
   <!-- type of the solver: type="multigrid" , type="external"
        externtype="SGpp" or ...  -->
-  <solver type="multigrid" externtype="SGpp">
+  <solver type="multigrid" externtype="">
       <!-- This is right now used to limit the combi technique , after this time the fullgrids will be forced to be combined -->
 	  <multigrid-solver>
-	  	  <minCombiStep value="0.1"/>
+	  	  <minCombiStep value="2.1"/>
 	  	  <CombiStepControl value="1e-3"/>
-	          <maxCombiStep value="0.1"/>
-	          <solverEps value="1e-8"/>
+	      <maxCombiStep value="2.1"/>
+	      <solverEps value="1e-8"/>
 	          <!-- The minimum value of one time step (inside the solver) 
 	           For solvers with fixed time step this can be taken as a fix timestep -->
-		  <mindt value="0.0001"/>
+		  <mindt value="0.001"/>
 	          <!-- The maximum value of one time step (inside the solver) -->
-		  <maxdt value="0.01"/>
+		  <maxdt value="0.05"/>
 		  <usepredictor value="true"/>
 		  <useTimeStepControl value="true"/>
-		  <timeStepControl value="1e-4"/>
+		  <timeStepControl value="1e-2"/>
 		  <timeStepControlInfNorm value="true"/>
 		  <predictorUnderRelaxCoef value="1.0"/>
 	  </multigrid-solver>
@@ -25,8 +25,9 @@
   <!-- Here we specify the grid properies (usually these are sparse grid properties) 
    sparsegrid , fullgrid -->
   <gridproperties>
+<!-- truncated_combigrid , fullgrid-->
 	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
-	  <DEBUG_PLOTTING value="false" gridspecificplotting="false"/>
+	  <DEBUG_PLOTTING value="false" />
 	  <MAX_LEVEL value="6"/>
 	  <USE_SCALING value="true"/>
 	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
@@ -39,21 +40,24 @@
   <!-- Here we define the starting domain end the end evaluation points 
       min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
   <domain>
-	    <variable name="S" min="95" max="105" evaluation="100" />
+	    <variable name="V" min="0.12" max="0.2" evaluation="0.16"/>
+	    <variable name="FX" min="0.7" max="1.3" evaluation="1"/>
   </domain>
 
   <thetaoperator>
 	<!-- There can be different type of models depending on the type argument -->
 	<DIFFUSION_VARIABLES>
-	  <variable name="S" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
+	  <variable name="V" type="NB" drift="0.05" convec="0.05" sigma="0.4"/>
+	  <variable name="FX" type="NB" drift="0.05" convec="0.05" sigma="0.4"/>
 	</DIFFUSION_VARIABLES>
 	<RISK_FREE_RATE value="0.05" variable_coupled=""/>
-	<!-- the correlation matrix -->
 	<CORRELATIONS>
-	    <correlation value="1.0"/>
+	    <correlation value="1.0,-0.2"/>
+	    <correlation value="-0.2,1.0"/>
 	</CORRELATIONS>
 	<STANDARD_DEVIATION_FACTORS>
-	  <STANDARD_DEVIATION_FACTOR value="8"/>
+	  <STANDARD_DEVIATION_FACTOR value="4"/>
+	  <STANDARD_DEVIATION_FACTOR value="4"/>
 	</STANDARD_DEVIATION_FACTORS>
   </thetaoperator>
   

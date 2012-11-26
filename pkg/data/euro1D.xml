@@ -7,11 +7,11 @@
 	  <multigrid-solver>
 	  	  <minCombiStep value="0.1"/>
 	  	  <CombiStepControl value="1e-3"/>
-	          <maxCombiStep value="0.1"/>
-	          <solverEps value="1e-8"/>
+	      <maxCombiStep value="0.1"/>
+	      <solverEps value="1e-8"/>
 	          <!-- The minimum value of one time step (inside the solver) 
 	           For solvers with fixed time step this can be taken as a fix timestep -->
-		  <mindt value="0.0001"/>
+		  <mindt value="0.0005"/>
 	          <!-- The maximum value of one time step (inside the solver) -->
 		  <maxdt value="0.01"/>
 		  <usepredictor value="true"/>
@@ -25,9 +25,9 @@
   <!-- Here we specify the grid properies (usually these are sparse grid properties) 
    sparsegrid , fullgrid -->
   <gridproperties>
-	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
-	  <DEBUG_PLOTTING value="false" gridspecificplotting="false"/>
-	  <MAX_LEVEL value="6"/>
+	  <GRID_TYPE value="fullgrid_WB"/>
+	  <DEBUG_PLOTTING value="false" gridspecificplotting="false" resolution="50"/>
+	  <MAX_LEVEL value="8"/>
 	  <USE_SCALING value="true"/>
 	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
 	  <combigrid>
@@ -39,7 +39,7 @@
   <!-- Here we define the starting domain end the end evaluation points 
       min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
   <domain>
-	    <variable name="S" min="95" max="105" evaluation="100" />
+    <variable name="S" min="90" max="110" evaluation="100"/>
   </domain>
 
   <thetaoperator>

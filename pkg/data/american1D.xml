@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <thetaconfigurations>
-  <!-- type of the solver: type="multigrid" , type="external"
-       externtype="SGpp" or ...  -->
+
   <solver type="multigrid" externtype="SGpp">
       <!-- This is right now used to limit the combi technique , after this time the fullgrids will be forced to be combined -->
 	  <multigrid-solver>
 	  	  <minCombiStep value="0.1"/>
 	  	  <CombiStepControl value="1e-3"/>
-	          <maxCombiStep value="0.1"/>
-	          <solverEps value="1e-8"/>
+	      <maxCombiStep value="0.1"/>
+	      <solverEps value="1e-8"/>
 	          <!-- The minimum value of one time step (inside the solver) 
 	           For solvers with fixed time step this can be taken as a fix timestep -->
 		  <mindt value="0.0001"/>
 	          <!-- The maximum value of one time step (inside the solver) -->
-		  <maxdt value="0.01"/>
-		  <usepredictor value="true"/>
-		  <useTimeStepControl value="true"/>
+		  <maxdt value="0.001"/>
+		  <usepredictor value="false"/>
+		  <useTimeStepControl value="false"/>
 		  <timeStepControl value="1e-4"/>
 		  <timeStepControlInfNorm value="true"/>
 		  <predictorUnderRelaxCoef value="1.0"/>
 	  </multigrid-solver>
   </solver>
-
+  
   <!-- Here we specify the grid properies (usually these are sparse grid properties) 
    sparsegrid , fullgrid -->
   <gridproperties>
-	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
-	  <DEBUG_PLOTTING value="false" gridspecificplotting="false"/>
-	  <MAX_LEVEL value="6"/>
+	  <GRID_TYPE value="fullgrid_WB"/>
+	  <DEBUG_PLOTTING value="false" gridspecificplotting="true" resolution="50"/>
+	  <MAX_LEVEL value="7"/>
 	  <USE_SCALING value="true"/>
 	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
 	  <combigrid>
@@ -39,7 +38,7 @@
   <!-- Here we define the starting domain end the end evaluation points 
       min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
   <domain>
-	    <variable name="S" min="95" max="105" evaluation="100" />
+    <variable name="S" min="94" max="106" evaluation="100" />
   </domain>
 
   <thetaoperator>

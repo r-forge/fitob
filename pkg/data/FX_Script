@@ -1,0 +1,13 @@
+model MyModelD2;
+   import V;
+   import FX;
+   export P;
+
+   V = MODEL(0.001*(0.1-V),0.001*(0.1-V),0.2);   
+   FX = MODEL(0.02*FX,0.02*FX,V*FX);  
+
+   T = 1.0;
+   K = 1.0;
+   Theta T;
+   P = MAX(FX-K, 0.0 );
+end;
