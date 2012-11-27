@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<thetaconfigurations>
+
+  <solver type="multigrid" externtype="SGpp">
+      <!-- This is right now used to limit the combi technique , after this time the fullgrids will be forced to be combined -->
+	  <multigrid-solver>
+	  	  <minCombiStep value="0.1"/>
+	  	  <CombiStepControl value="1e-3"/>
+	      <maxCombiStep value="0.1"/>
+	      <solverEps value="1e-8"/>
+	          <!-- The minimum value of one time step (inside the solver) 
+	           For solvers with fixed time step this can be taken as a fix timestep -->
+		  <mindt value="0.0001"/>
+	          <!-- The maximum value of one time step (inside the solver) -->
+		  <maxdt value="0.001"/>
+		  <usepredictor value="false"/>
+		  <useTimeStepControl value="false"/>
+		  <timeStepControl value="1e-4"/>
+		  <timeStepControlInfNorm value="true"/>
+		  <predictorUnderRelaxCoef value="1.0"/>
+	  </multigrid-solver>
+  </solver>
+  
+  <!-- Here we specify the grid properies (usually these are sparse grid properties) 
+   sparsegrid , fullgrid -->
+  <gridproperties>
+	  <GRID_TYPE value="fullgrid_WB"/>
+	  <DEBUG_PLOTTING value="false" gridspecificplotting="true" resolution="50"/>
+	  <MAX_LEVEL value="7"/>
+	  <USE_SCALING value="true"/>
+	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
+	  <combigrid>
+			<USE_OPTICOM value="false"/>
+			<COMBI_DIAGONAL_CUT_LEVEL value="-2.0"/>
+	  </combigrid>
+  </gridproperties>
+
+  <!-- Here we define the starting domain end the end evaluation points 
+      min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
+  <domain>
+    <variable name="S" min="94" max="106" evaluation="100" />
+  </domain>
+
+  <thetaoperator>
+	<!-- There can be different type of models depending on the type argument -->
+	<DIFFUSION_VARIABLES>
+	  <variable name="S" type="GB" drift="0.05" convec="0.05" sigma="0.4"/>
+	</DIFFUSION_VARIABLES>
+	<RISK_FREE_RATE value="0.05" variable_coupled=""/>
+	<!-- the correlation matrix -->
+	<CORRELATIONS>
+	    <correlation value="1.0"/>
+	</CORRELATIONS>
+	<STANDARD_DEVIATION_FACTORS>
+	  <STANDARD_DEVIATION_FACTOR value="8"/>
+	</STANDARD_DEVIATION_FACTORS>
+  </thetaoperator>
+  
+</thetaconfigurations>

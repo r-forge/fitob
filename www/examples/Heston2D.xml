@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<thetaconfigurations>
+  <!-- type of the solver: type="multigrid" , type="external"
+       externtype="SGpp" or ...  -->
+  <solver type="multigrid" externtype="">
+      <!-- This is right now used to limit the combi technique , after this time the fullgrids will be forced to be combined -->
+	  <multigrid-solver>
+	  	  <minCombiStep value="2.1"/>
+	  	  <CombiStepControl value="1e-3"/>
+	      <maxCombiStep value="2.1"/>
+	      <solverEps value="1e-8"/>
+	          <!-- The minimum value of one time step (inside the solver) 
+	           For solvers with fixed time step this can be taken as a fix timestep -->
+		  <mindt value="0.001"/>
+	          <!-- The maximum value of one time step (inside the solver) -->
+		  <maxdt value="0.05"/>
+		  <usepredictor value="true"/>
+		  <useTimeStepControl value="true"/>
+		  <timeStepControl value="1e-2"/>
+		  <timeStepControlInfNorm value="true"/>
+		  <predictorUnderRelaxCoef value="1.0"/>
+	  </multigrid-solver>
+  </solver>
+
+  <!-- Here we specify the grid properies (usually these are sparse grid properties) 
+   sparsegrid , fullgrid -->
+  <gridproperties>
+<!-- truncated_combigrid , fullgrid-->
+	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
+	  <DEBUG_PLOTTING value="false" />
+	  <MAX_LEVEL value="8"/>
+	  <USE_SCALING value="true"/>
+	  <DIMENSION_ADPTIVITY value="false" level-vect="4,6"/>
+	  <combigrid>
+			<USE_OPTICOM value="false"/>
+			<COMBI_DIAGONAL_CUT_LEVEL value="-2.0"/>
+	  </combigrid>
+  </gridproperties>
+
+  <!-- Here we define the starting domain end the end evaluation points 
+      min-max are the starting domain "evaluation" shows the evaluation point (per axis)-->
+  <domain>
+	    <variable name="V1" min="0.12" max="0.2" evaluation="0.16"/>
+	    <variable name="S1" min="0.7" max="1.3" evaluation="1"/>
+  </domain>
+
+  <thetaoperator>
+	<!-- There can be different type of models depending on the type argument -->
+	<DIFFUSION_VARIABLES>
+	  <variable name="V1" type="Heston-CIR" k="0.0001" theta="0.16" sigma="0.04"/>
+	  <variable name="S1" type="Heston" drift="0.05" convec="0.05"/>
+	</DIFFUSION_VARIABLES>
+	<RISK_FREE_RATE value="0.05" variable_coupled=""/>
+	<CORRELATIONS>
+	    <correlation value="1.0,0.0"/>
+	    <correlation value="0.0,1.0"/>
+	</CORRELATIONS>
+	<STANDARD_DEVIATION_FACTORS>
+	  <STANDARD_DEVIATION_FACTOR value="3"/>
+	  <STANDARD_DEVIATION_FACTOR value="3"/>
+	</STANDARD_DEVIATION_FACTORS>
+  </thetaoperator>
+  
+</thetaconfigurations>

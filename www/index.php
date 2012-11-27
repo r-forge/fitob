@@ -32,34 +32,86 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 <!-- get project title  -->
 <!-- own website starts here, the following may be changed as you like -->
-
+<!--
 <?php if ($handle=fopen('http://'.$domain.'/export/projtitl.php?group_name='.$group_name,'r')){
 $contents = '';
 while (!feof($handle)) {
 	$contents .= fread($handle, 8192);
 }
 fclose($handle);
-echo $contents; } ?>
+echo $contents; } ?> -->
 
 <!-- end of project description -->
 
+<title>Welcome to the Fitob R Package</title>
+
 <p> The main focus of the R Package Fitob is the PDE-based financial derivative pricing.  
-Fitob is able to solve not just the Black-Scholes PDE in a multidimensional setting, 
+Fitob is able to solve not just the Black-Scholes PDE in a multi-dimensional setting, 
 but also the more general Fokker-Planck (convection-diffusion) PDE. 
 Fitob provides a general scripting interface that can describe almost any financial 
-contract in an efficient and unique way. <br> 
-The following examples illustrate the PDE-based pricing approach of financial contracts:
+contract in an efficient and unique way. <br> </p>
+<br>
+<br>
+
+<p>
+Important links:
+<ul>
+<li>Manual and Tutorial of the Fitob R Package <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf">  here </strong> </a> </li>
+<li>Download Fitob R Package <strong> <a href="http://r-forge.r-project.org/R/?group_id=1515">  here </strong> </a> </li>
+<li>The project summary page you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a> </li>
+</ul>
 </p>
-<p> <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="304" height="228"> </p>
+<br>
+<br>
 
-<p> <img src="sim_S_A.gif" alt="Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
-A is the state of the account, S is the underlying's price" width="304" height="228"> </p>
+<p>
+The following examples illustrate the PDE-based pricing approach of financial contracts (you can find more examples in the examples section of the 
+<strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf"> manual </strong> </a>):
+</p>
+<br>
+<br>
 
-<p> Manual and Tutorial of the Fitob R Package <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf">  here </strong> </a> </p>
+   <ul>
+   <h4>
+   <p> 
+   Pricing a 1D American Option. The plot shows the resulting price curve. 
+   <img src="american1D.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> 
+   You can download the necessary files under:
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1D.xml">  american1D.xml </strong> </a>
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1DScript">  american1DScript </strong> </a> <br>
+   In order to run the example install Fitob and type in R:<br>
+   >  require(fitob); <br>
+   >  liMy = fitobPriceMesh("american1D.xml" , "american1DScript",5);  <br>
+   >  fitobMeshPlot(liMy); <br>
+   >  liMy[[1]] #the scalar price<br>
+   </h4>
+   </p>
 
-<p> Download Fitob R Package <strong> <a href="http://r-forge.r-project.org/R/?group_id=1515">  here </strong> </a> </p>
+   <ul>
+   <p> 
+   <h4>
+   Pricing a 1D Option under the Heston process. The plot shows the resulting price surface in 2D. 
+   <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> 
+   You can download the necessary files under:
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D.xml">  Heston2D.xml </strong> </a>
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D_Script">  Heston2D_Script </strong> </a>
+   In order to run the example install Fitob and type in R:<br>
+   >  require(fitob); <br>
+   >  liMy = fitobPriceMesh("Heston2D.xml" , "Heston2D_Script",5);  <br>
+   >  fitobMeshPlot(liMy); <br>
+   >  liMy[[1]] #the scalar price <br>
+   </h4>
+   </p>
 
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+   </ul>
+   <h4>
+   <p> 
+   Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
+   A is the state of the account, S is the underlying's price. (see J.Benk, D. Plueger: Hybrid Parallel Solutions of the Black-Scholes PDE with the Truncated Combination Technique. In Proceedings of the HPCS conference, 2012 Madrid.)
+   <img src="sim_S_A.gif" alt="Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
+   A is the state of the account, S is the underlying's price" width="504" height="428" align="middle"> 
+   </h4>
+   </p>
 
 </body>
 </html>

@@ -1,0 +1,13 @@
+model americanD3;
+   import S1;
+   import S2;
+   import S3;
+   export P;
+    
+   K = 300;
+   loop (inf)
+     P = MAX(K-(S1+S2+S3),P);
+   end;
+   Theta 1.0;
+   P = MAX(K-(S1+S2+S3),0);
+end;

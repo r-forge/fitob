@@ -1,0 +1,7 @@
+model europD1;
+   import S;
+   export P;
+
+    Theta 1.0; 
+    P = MAX(100-S,0);
+end;
