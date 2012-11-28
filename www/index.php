@@ -43,7 +43,7 @@ echo $contents; } ?> -->
 
 <!-- end of project description -->
 
-<title>Welcome to the Fitob R Package</title>
+<center> <h1>Welcome to the Fitob R Package<br></h1> </center>
 
 <p> The main focus of the R Package Fitob is the PDE-based financial derivative pricing.  
 Fitob is able to solve not just the Black-Scholes PDE in a multi-dimensional setting, 
@@ -65,53 +65,54 @@ Important links:
 <br>
 
 <p>
-The following examples illustrate the PDE-based pricing approach of financial contracts (you can find more examples in the examples section of the 
+The following examples illustrate the PDE-based pricing approach of financial contracts (you can find more examples 
+with detailed explanations in the examples section of the 
 <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf"> manual </strong> </a>):
 </p>
 <br>
 <br>
 
    <ul>
-   <h4>
-   <p> 
-   Pricing a 1D American Option. The plot shows the resulting price curve. 
-   <img src="american1D.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> 
+   <h5>
+   Pricing a 1D American Option. The plot shows the resulting price curve. <br>
+   <center>
+   <img src="american1D.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> <br>
+   </center>
    You can download the necessary files under:
-   </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1D.xml">  american1D.xml </strong> </a>
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1D.xml">  american1D.xml </strong> </a> ,
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1DScript">  american1DScript </strong> </a> <br>
-   In order to run the example install Fitob and type in R:<br>
+   In order to run the example, install Fitob and type in R:<br>
    >  require(fitob); <br>
    >  liMy = fitobPriceMesh("american1D.xml" , "american1DScript",5);  <br>
    >  fitobMeshPlot(liMy); <br>
    >  liMy[[1]] #the scalar price<br>
-   </h4>
-   </p>
+   </h5>
 
    <ul>
-   <p> 
-   <h4>
-   Pricing a 1D Option under the Heston process. The plot shows the resulting price surface in 2D. 
-   <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> 
+   <h5>
+   Pricing a 1D Option under the Heston process. The plot shows the resulting price surface in 2D. <br>
+   <center>
+   <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> <br>
+   </center>
    You can download the necessary files under:
-   </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D.xml">  Heston2D.xml </strong> </a>
+   </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D.xml">  Heston2D.xml </strong> </a> , 
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D_Script">  Heston2D_Script </strong> </a>
-   In order to run the example install Fitob and type in R:<br>
+   In order to run the example, install Fitob and type in R:<br>
    >  require(fitob); <br>
    >  liMy = fitobPriceMesh("Heston2D.xml" , "Heston2D_Script",5);  <br>
    >  fitobMeshPlot(liMy); <br>
    >  liMy[[1]] #the scalar price <br>
-   </h4>
-   </p>
+   </h5>
 
    </ul>
-   <h4>
-   <p> 
-   Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
-   A is the state of the account, S is the underlying's price. (see J.Benk, D. Plueger: Hybrid Parallel Solutions of the Black-Scholes PDE with the Truncated Combination Technique. In Proceedings of the HPCS conference, 2012 Madrid.)
+   <h5>
+   Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB) modelled in 5D. 
+   A is the account of the benefit, S is the underlying's price. (see J.Benk, D. Plueger: Hybrid Parallel Solutions of the Black-Scholes PDE with the Truncated Combination Technique. In Proceedings of the HPCS conference, 2012 Madrid.) <br>
+   <center>
    <img src="sim_S_A.gif" alt="Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
-   A is the state of the account, S is the underlying's price" width="504" height="428" align="middle"> 
-   </h4>
-   </p>
+   A is the state of the account, S is the underlying's price" width="504" height="428" align="middle"> <br>
+   </center>
+   </h5>
 
 </body>
 </html>
