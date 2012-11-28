@@ -45,12 +45,11 @@ echo $contents; } ?> -->
 
 <center> <h1>Welcome to the Fitob R Package<br></h1> </center>
 
-<p> The main focus of the R Package Fitob is the PDE-based financial derivative pricing.  
+<p> The main focus of the Fitob R Package is the PDE-based financial derivative pricing.  
 Fitob is able to solve not just the Black-Scholes PDE in a multi-dimensional setting, 
 but also the more general Fokker-Planck (convection-diffusion) PDE. 
 Fitob provides a general scripting interface that can describe almost any financial 
-contract in an efficient and unique way. <br> </p>
-<br>
+contract in an efficient and unique way. This feature is demonstrated by several examples. <br> </p>
 <br>
 
 <p>
@@ -70,11 +69,11 @@ with detailed explanations in the examples section of the
 <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf"> manual </strong> </a>):
 </p>
 <br>
-<br>
 
-   <ul>
+<ul>
    <h5>
-   Pricing a 1D American Option. The plot shows the resulting price curve. <br>
+   <li>
+    Pricing a 1D American Option. The plot shows the resulting price curve. <br>
    <center>
    <img src="american1D.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> <br>
    </center>
@@ -86,10 +85,12 @@ with detailed explanations in the examples section of the
    >  liMy = fitobPriceMesh("american1D.xml" , "american1DScript",5);  <br>
    >  fitobMeshPlot(liMy); <br>
    >  liMy[[1]] #the scalar price<br>
+   </li>
    </h5>
 
-   <ul>
+
    <h5>
+   <li>
    Pricing a 1D Option under the Heston process. The plot shows the resulting price surface in 2D. <br>
    <center>
    <img src="heston.png" alt="Pricing a 1D Option under the Heston process" width="504" height="428" align="middle"> <br>
@@ -102,17 +103,20 @@ with detailed explanations in the examples section of the
    >  liMy = fitobPriceMesh("Heston2D.xml" , "Heston2D_Script",5);  <br>
    >  fitobMeshPlot(liMy); <br>
    >  liMy[[1]] #the scalar price <br>
+   </li>
    </h5>
 
-   </ul>
    <h5>
+   <li>
    Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB) modelled in 5D. 
    A is the account of the benefit, S is the underlying's price. (see J.Benk, D. Plueger: Hybrid Parallel Solutions of the Black-Scholes PDE with the Truncated Combination Technique. In Proceedings of the HPCS conference, 2012 Madrid.) <br>
    <center>
    <img src="sim_S_A.gif" alt="Early withdrawal boundary for a Guaranteed Minimum Withdrawal Benefit (GMWB). 
    A is the state of the account, S is the underlying's price" width="504" height="428" align="middle"> <br>
    </center>
+   </li>
    </h5>
+</ul>
 
 </body>
 </html>
