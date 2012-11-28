@@ -26,7 +26,7 @@
    sparsegrid , fullgrid -->
   <gridproperties>
 <!-- truncated_combigrid , fullgrid-->
-	  <GRID_TYPE value="extrap_truncated_combigrid"/>
+	  <GRID_TYPE value="extrap_truncated_combigrid_WB"/>
 	  <DEBUG_PLOTTING value="false" />
 	  <MAX_LEVEL value="8"/>
 	  <USE_SCALING value="true"/>

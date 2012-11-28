@@ -116,6 +116,14 @@ with detailed explanations in the examples section of the
    </center>
    </li>
    </h5>
+
+   <h5>
+   <li> If you want to price you own financial contract, it is recommended to take one example 
+        (</strong> <a href="http://fitob.r-forge.r-project.org/examples/">  from here </strong> </a>) 
+        and modify it incrementally. 
+        If you face any problems please do not hesitate to write to (benkjanos at gmail dot com)
+   </li>
+   </h5>
 </ul>
 
 </body>
