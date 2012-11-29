@@ -61,14 +61,12 @@ Important links:
 </ul>
 </p>
 <br>
-<br>
 
 <p>
 The following examples illustrate the PDE-based pricing approach of financial contracts (you can find more examples 
 with detailed explanations in the examples section of the 
 <strong> <a href="http://fitob.r-forge.r-project.org/fitob_manual.pdf"> manual </strong> </a>):
 </p>
-<br>
 
 <ul>
    <h5>
@@ -80,7 +78,7 @@ with detailed explanations in the examples section of the
    You can download the necessary files under:
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1D.xml">  american1D.xml </strong> </a> ,
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/american1DScript">  american1DScript </strong> </a> <br>
-   In order to run the example, install Fitob and type in R:<br>
+   In order to run the example, install Fitob and type in R (assuming that american1D.xml and american1DScript are in the current directory):<br>
    >  require(fitob); <br>
    >  liMy = fitobPriceMesh("american1D.xml" , "american1DScript",5);  <br>
    >  fitobMeshPlot(liMy); <br>
@@ -98,7 +96,7 @@ with detailed explanations in the examples section of the
    You can download the necessary files under:
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D.xml">  Heston2D.xml </strong> </a> , 
    </strong> <a href="http://fitob.r-forge.r-project.org/examples/Heston2D_Script">  Heston2D_Script </strong> </a>
-   In order to run the example, install Fitob and type in R:<br>
+   In order to run the example, install Fitob and type in R (assuming that Heston2D.xml and Heston2D_Script are in the current directory):<br>
    >  require(fitob); <br>
    >  liMy = fitobPriceMesh("Heston2D.xml" , "Heston2D_Script",5);  <br>
    >  fitobMeshPlot(liMy); <br>
